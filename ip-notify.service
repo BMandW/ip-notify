@@ -1,0 +1,13 @@
+[Unit]
+Description=ipnotify
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/integrai/ip-notify/
+ExecStart=/home/integrai/ip-notify/ip-beacon.py
+Restart=on-failure
+User=integrai
+
+[Install]
+WantedBy=multi-user.target

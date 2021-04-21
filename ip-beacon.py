@@ -21,5 +21,5 @@ while True:
     for ipaddress, brd in brds:
         s.sendto(b"host=%s" %(gethostname().encode('ascii')), (brd, 37001))
         print("%s\t%s" % (ipaddress.decode('ascii'), brd.decode('ascii')))
-    time.sleep(5)
+    time.sleep(10)
     s.close()
