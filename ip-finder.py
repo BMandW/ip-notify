@@ -6,7 +6,7 @@ import sys
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s\t%(message)s")
 
-def main(broadcast):
+def main():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
@@ -18,7 +18,6 @@ def main(broadcast):
         try:
             msg, address = sock.recvfrom(256)
             logging.info("Receive Packet from %s %s", msg.decode('utf8'), address[0])
-            time.sleep(1)
 
         except socket.timeout:
             pass
@@ -29,9 +28,4 @@ def main(broadcast):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        logging.error("broadcast addressを指定")
-        exit(-1)
-
-    broadcast = sys.argv[1]
-    main(broadcast)
+    main()
